@@ -1,7 +1,8 @@
-<form>
-  <input type="text" placeholder="New task title" />
-  <button type="submit">Submit</button>
-</form>
+<%= form_for @changeset, "#", [phx_submit: "create_task"], fn f -> %>
+  <%= text_input f, :title, placeholder: "New task title", required: true %>
+  <%= error_tag f, :title %>
+  <%= submit "Submit" %>
+<% end %>
 
 <ul>
   <%= for task <- @tasks do %>
@@ -9,7 +10,6 @@
       <%= checkbox :task, :completed, phx_click: "toggle_completed", phx_value_id: task.id, phx_value_completed: "true", value: task.completed %>
       <%= task.title %>
       <small><%= task.updated_at %></small>
-      <button>Delete</button>
     </li>
   <% end %>
 </ul>
@@ -20,7 +20,6 @@
       <%= checkbox :task, :completed, phx_click: "toggle_completed", phx_value_id: task.id, phx_value_completed: "false", value: task.completed %>
       <%= task.title %>
       <small><%= task.updated_at %></small>
-      <button>Delete</button>
     </li>
   <% end %>
 </ul>
