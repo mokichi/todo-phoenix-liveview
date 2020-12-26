@@ -21,6 +21,13 @@ defmodule TodoPhoenixLiveview.Todo do
     Repo.all(Task)
   end
 
+  def list_tasks_by_completed(completed) do
+    Task
+    |> where([t], t.completed == ^completed)
+    |> order_by(desc: :updated_at)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single task.
 

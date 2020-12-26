@@ -13,6 +13,6 @@ defmodule TodoPhoenixLiveview.Todo.Task do
   def changeset(task, attrs) do
     task
     |> cast(attrs, [:title, :completed])
-    |> validate_required([:title, :completed])
+    |> validate_required([:title])
   end
 end

@@ -17,7 +17,8 @@ defmodule TodoPhoenixLiveviewWeb.Router do
   scope "/", TodoPhoenixLiveviewWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    # live "/", PageLive, :index
+    live "/", TodoLive.Index, :index
 
     live "/tasks", TaskLive.Index, :index
     live "/tasks/new", TaskLive.Index, :new

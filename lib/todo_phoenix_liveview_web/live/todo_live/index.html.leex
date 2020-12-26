@@ -1,0 +1,26 @@
+<form>
+  <input type="text" placeholder="New task title" />
+  <button type="submit">Submit</button>
+</form>
+
+<ul>
+  <%= for task <- @tasks do %>
+    <li>
+      <input type="checkbox" <%= if task.completed, do: "checked" %> />
+      <%= task.title %>
+      <small><%= task.updated_at %></small>
+      <button>Delete</button>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <%= for task <- @completed_tasks do %>
+    <li>
+      <input type="checkbox" <%= if task.completed, do: "checked" %> />
+      <%= task.title %>
+      <small><%= task.updated_at %></small>
+      <button>Delete</button>
+    </li>
+  <% end %>
+</ul>
