@@ -10,6 +10,7 @@
       <%= checkbox :task, :completed, phx_click: "toggle_completed", phx_value_id: task.id, phx_value_completed: "true", value: task.completed %>
       <%= task.title %>
       <small><%= task.updated_at %></small>
+      <button phx-click="delete_task" phx-value-id="<%= task.id %>">Delete</button>
     </li>
   <% end %>
 </ul>
@@ -20,6 +21,7 @@
       <%= checkbox :task, :completed, phx_click: "toggle_completed", phx_value_id: task.id, phx_value_completed: "false", value: task.completed %>
       <%= task.title %>
       <small><%= task.updated_at %></small>
+      <button phx-click="delete_task" phx-value-id="<%= task.id %>">Delete</button>
     </li>
   <% end %>
 </ul>

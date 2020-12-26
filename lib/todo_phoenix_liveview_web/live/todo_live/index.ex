@@ -23,6 +23,14 @@ defmodule TodoPhoenixLiveviewWeb.TodoLive.Index do
     {:noreply, assign_params(socket)}
   end
 
+  @impl true
+  def handle_event("delete_task", %{"id" => id}, socket) do
+    task = Todo.get_task!(id)
+    {:ok, _} = Todo.delete_task(task)
+
+    {:noreply, assign_params(socket)}
+  end
+
   defp assign_params(socket) do
     socket
     |> assign(:changeset, Todo.change_task(%Task{}))
