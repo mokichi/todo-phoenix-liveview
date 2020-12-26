@@ -6,7 +6,7 @@
 <ul>
   <%= for task <- @tasks do %>
     <li>
-      <input type="checkbox" <%= if task.completed, do: "checked" %> />
+      <%= checkbox :task, :completed, phx_click: "toggle_completed", phx_value_id: task.id, phx_value_completed: "true", value: task.completed %>
       <%= task.title %>
       <small><%= task.updated_at %></small>
       <button>Delete</button>
@@ -17,7 +17,7 @@
 <ul>
   <%= for task <- @completed_tasks do %>
     <li>
-      <input type="checkbox" <%= if task.completed, do: "checked" %> />
+      <%= checkbox :task, :completed, phx_click: "toggle_completed", phx_value_id: task.id, phx_value_completed: "false", value: task.completed %>
       <%= task.title %>
       <small><%= task.updated_at %></small>
       <button>Delete</button>

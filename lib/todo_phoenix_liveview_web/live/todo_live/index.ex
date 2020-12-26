@@ -6,10 +6,20 @@ defmodule TodoPhoenixLiveviewWeb.TodoLive.Index do
 
   @impl true
   def mount(_parmas, _session, socket) do
-    socket =
-      socket
-      |> assign(:tasks, Todo.list_tasks_by_completed(false))
-      |> assign(:completed_tasks, Todo.list_tasks_by_completed(true))
-    {:ok, socket}
+    {:ok, assign_params(socket)}
+  end
+
+  @impl true
+  def handle_event("toggle_completed", %{"id" => id, "completed" => completed}, socket) do
+    task = Todo.get_task!(id)
+    {:ok, _} = Todo.update_task(task, %{completed: completed})
+
+    {:noreply, assign_params(socket)}
+  end
+
+  defp assign_params(socket) do
+    socket
+    |> assign(:tasks, Todo.list_tasks_by_completed(false))
+    |> assign(:completed_tasks, Todo.list_tasks_by_completed(true))
   end
 end
