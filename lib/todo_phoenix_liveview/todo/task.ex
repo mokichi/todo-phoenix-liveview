@@ -5,7 +5,6 @@ defmodule TodoPhoenixLiveview.Todo.Task do
   schema "tasks" do
     field :title, :string
     field :completed, :boolean, default: false
-    field :editting, :boolean, default: false, virtual: true
 
     timestamps()
   end

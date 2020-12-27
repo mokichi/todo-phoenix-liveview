@@ -1,0 +1,5 @@
+<ul>
+  <%= for task <- @tasks do %>
+    <%= live_component @socket, ItemComponent, id: task.id, task: task %>
+  <% end %>
+</ul>

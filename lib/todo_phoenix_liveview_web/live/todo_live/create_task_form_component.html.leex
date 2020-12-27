@@ -1,0 +1,5 @@
+<%= form_for @changeset, "#", [phx_submit: "create_task"], fn f -> %>
+  <%= text_input f, :title, placeholder: "New task title", required: true %>
+  <%= error_tag f, :title %>
+  <%= submit "Submit" %>
+<% end %>

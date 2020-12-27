@@ -1,0 +1,4 @@
+<%= form_for @changeset, "#", [phx_submit: "update_task"], fn f -> %>
+  <input type="hidden" name="id" value="<%= @id %>" />
+  <%= text_input f, :title, required: true %>
+<% end %>
