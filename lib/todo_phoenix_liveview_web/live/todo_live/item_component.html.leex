@@ -1,5 +1,5 @@
 <li>
-  <input type="checkbox" phx-click="toggle_completed" phx-value-id="<%= @id %>" phx-value-completed="<%= !@task.completed %>" <%= if @task.completed, do: "checked" %> />
+  <input type="checkbox" phx-click="toggle_task_completed" phx-target="<%= @myself %>" phx-value-completed="<%= !@task.completed %>" <%= if @task.completed, do: "checked" %> />
   <%= if @editting do %>
     <%= live_component @socket, UpdateTaskFormComponent, id: @id, task: @task %>
   <% else %>
@@ -11,5 +11,5 @@
   <% else %>
     <button phx-click="toggle_editting" phx-target="<%= @myself %>" phx-value-editting="true">Edit</button>
   <% end %>
-  <button phx-click="delete_task" phx-value-id="<%= @id %>">Delete</button>
+  <button phx-click="delete_task" phx-target="<%= @myself %>">Delete</button>
 </li>

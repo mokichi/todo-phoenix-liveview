@@ -10,32 +10,7 @@ defmodule TodoPhoenixLiveviewWeb.TodoLive.Index do
   end
 
   @impl true
-  def handle_event("create_task", %{"task" => %{"title" => _} = task_params}, socket) do
-    {:ok, _} = Todo.create_task(task_params)
-    {:noreply, assign_params(socket)}
-  end
-
-  @impl true
-  def handle_event("toggle_completed", %{"id" => id, "completed" => completed}, socket) do
-    task = Todo.get_task!(id)
-    {:ok, _} = Todo.update_task(task, %{completed: completed})
-
-    {:noreply, assign_params(socket)}
-  end
-
-  @impl true
-  def handle_event("update_task", %{"id" => id, "task" => %{"title" => _} = task_params}, socket) do
-    task = Todo.get_task!(id)
-    {:ok, _} = Todo.update_task(task, task_params)
-
-    {:noreply, assign_params(socket)}
-  end
-
-  @impl true
-  def handle_event("delete_task", %{"id" => id}, socket) do
-    task = Todo.get_task!(id)
-    {:ok, _} = Todo.delete_task(task)
-
+  def handle_info(:reload_tasks, socket) do
     {:noreply, assign_params(socket)}
   end
 

@@ -33,10 +33,6 @@ defmodule TodoPhoenixLiveview.TodoLiveTest do
       |> form("form", %{task: %{title: new_task_title}})
       |> render_submit()
 
-      assert Todo.list_tasks_by_completed(false)
-             |> Enum.at(1)
-             |> Map.get(:title) == new_task_title
-
       assert view |> has_element?("ul:nth-of-type(1) li", new_task_title)
     end
 
@@ -44,12 +40,8 @@ defmodule TodoPhoenixLiveview.TodoLiveTest do
       {:ok, view, _html} = live(conn, Routes.todo_index_path(conn, :index))
 
       view
-      |> element("input[type=checkbox][phx-value-id=#{task.id}")
+      |> element("ul:nth-of-type(1) li input[type=checkbox]")
       |> render_click()
-
-      assert Todo.list_tasks_by_completed(true)
-             |> Enum.at(1)
-             |> Map.get(:title) == task.title
 
       refute view |> has_element?("ul:nth-of-type(1) li", task.title)
       assert view |> has_element?("ul:nth-of-type(2) li", task.title)
@@ -59,12 +51,8 @@ defmodule TodoPhoenixLiveview.TodoLiveTest do
       {:ok, view, _html} = live(conn, Routes.todo_index_path(conn, :index))
 
       view
-      |> element("input[type=checkbox][phx-value-id=#{task.id}")
+      |> element("ul:nth-of-type(2) li input[type=checkbox]")
       |> render_click()
-
-      assert Todo.list_tasks_by_completed(false)
-             |> Enum.at(1)
-             |> Map.get(:title) == task.title
 
       assert view |> has_element?("ul:nth-of-type(1) li", task.title)
       refute view |> has_element?("ul:nth-of-type(2) li", task.title)
@@ -82,10 +70,6 @@ defmodule TodoPhoenixLiveview.TodoLiveTest do
       |> form("ul:nth-of-type(1) li form", %{task: %{title: new_task_title}})
       |> render_submit()
 
-      assert Todo.list_tasks_by_completed(false)
-             |> Enum.at(0)
-             |> Map.get(:title) == new_task_title
-
       assert view |> has_element?("ul:nth-of-type(1) li button", "Edit")
     end
 
@@ -93,10 +77,8 @@ defmodule TodoPhoenixLiveview.TodoLiveTest do
       {:ok, view, _html} = live(conn, Routes.todo_index_path(conn, :index))
 
       view
-      |> element("button[phx-value-id=#{task.id}]", "Delete")
+      |> element("ul:nth-of-type(1) li button", "Delete")
       |> render_click()
-
-      assert_raise Ecto.NoResultsError, fn -> Todo.get_task!(task.id) end
 
       refute view |> has_element?("ul li", task.title)
     end
