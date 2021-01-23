@@ -1,6 +1,7 @@
 # TodoPhoenixLiveview
 
 ![](https://github.com/mokichi/todo-phoenix-liveview/workflows/CI/badge.svg?branch=master)
+![](https://github.com/mokichi/todo-phoenix-liveview/workflows/Deploy%20to%20Gigalixir/badge.svg?branch=master)
 
 To start your Phoenix server:
 
@@ -12,6 +13,10 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+
+## Demo on Gigalixir
+
+https://todo-phoenix-liveview.gigalixirapp.com
 
 ## Learn more
 
