@@ -1,5 +1,7 @@
 # TodoPhoenixLiveview
 
+![](https://github.com/mokichi/todo-phoenix-liveview/workflows/CI/badge.svg?branch=master)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
