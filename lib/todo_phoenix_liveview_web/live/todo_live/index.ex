@@ -6,6 +6,7 @@ defmodule TodoPhoenixLiveviewWeb.TodoLive.Index do
 
   @impl true
   def mount(_parmas, _session, socket) do
+    IO.inspect _session
     {:ok, assign_params(socket)}
   end
 
