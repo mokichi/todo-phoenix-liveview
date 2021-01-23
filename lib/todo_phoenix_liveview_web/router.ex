@@ -18,7 +18,7 @@ defmodule TodoPhoenixLiveviewWeb.Router do
   end
 
   scope "/", TodoPhoenixLiveviewWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
 
     live "/", TodoLive.Index, :index
   end

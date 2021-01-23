@@ -7,6 +7,7 @@ defmodule TodoPhoenixLiveview.Todo do
   alias TodoPhoenixLiveview.Repo
 
   alias TodoPhoenixLiveview.Todo.Task
+  alias TodoPhoenixLiveview.Accounts.User
 
   @doc """
   Returns the list of tasks.
@@ -21,9 +22,9 @@ defmodule TodoPhoenixLiveview.Todo do
     Repo.all(Task)
   end
 
-  def list_tasks_by_completed(completed) do
+  def list_tasks_by_completed(%User{id: user_id}, completed) do
     Task
-    |> where([t], t.completed == ^completed)
+    |> where([t], t.user_id == ^user_id and t.completed == ^completed)
     |> order_by(desc: :updated_at)
     |> Repo.all()
   end
