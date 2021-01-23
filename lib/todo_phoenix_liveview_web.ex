@@ -48,6 +48,10 @@ defmodule TodoPhoenixLiveviewWeb do
         layout: {TodoPhoenixLiveviewWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
+
+      def current_user(session) do
+        TodoPhoenixLiveview.Accounts.get_user_by_session_token(session["user_token"])
+      end
     end
   end
 

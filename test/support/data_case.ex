@@ -24,6 +24,7 @@ defmodule TodoPhoenixLiveview.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import TodoPhoenixLiveview.DataCase
+      import TodoPhoenixLiveview.AccountsFixtures
     end
   end
 

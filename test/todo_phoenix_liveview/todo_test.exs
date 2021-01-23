@@ -14,6 +14,7 @@ defmodule TodoPhoenixLiveview.TodoTest do
       {:ok, task} =
         attrs
         |> Enum.into(@valid_attrs)
+        |> Map.put(:user_id, user_fixture().id)
         |> Todo.create_task()
 
       task
@@ -30,13 +31,15 @@ defmodule TodoPhoenixLiveview.TodoTest do
     end
 
     test "create_task/1 with valid data creates a task" do
-      assert {:ok, %Task{} = task} = Todo.create_task(@valid_attrs)
+      attrs = Map.put(@valid_attrs, :user_id, user_fixture().id)
+      assert {:ok, %Task{} = task} = Todo.create_task(attrs)
       assert task.completed == true
       assert task.title == "some title"
     end
 
     test "create_task/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Todo.create_task(@invalid_attrs)
+      attrs = Map.put(@invalid_attrs, :user_id, user_fixture().id)
+      assert {:error, %Ecto.Changeset{}} = Todo.create_task(attrs)
     end
 
     test "update_task/2 with valid data updates the task" do
