@@ -1,7 +1,7 @@
 # TodoPhoenixLiveview
 
-![](https://github.com/mokichi/todo-phoenix-liveview/workflows/CI/badge.svg?branch=master)
-![](https://github.com/mokichi/todo-phoenix-liveview/workflows/Deploy%20to%20Gigalixir/badge.svg?branch=master)
+![](https://github.com/mokichi/todo-phoenix-liveview/workflows/CI/badge.svg?branch=main)
+![](https://github.com/mokichi/todo-phoenix-liveview/workflows/Deploy%20to%20Gigalixir/badge.svg?branch=main)
 
 To start your Phoenix server:
 
