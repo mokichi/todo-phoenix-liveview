@@ -71,6 +71,7 @@ defmodule TodoPhoenixLiveview.TodoLiveTest do
       |> render_submit()
 
       assert view |> has_element?("ul:nth-of-type(1) li button", "Edit")
+      assert view |> has_element?("ul:nth-of-type(1) li", new_task_title)
     end
 
     test "deletes task", %{conn: conn, task: task} do
